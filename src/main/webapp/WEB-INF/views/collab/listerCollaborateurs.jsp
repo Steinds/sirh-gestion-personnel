@@ -28,7 +28,7 @@
      				 <br>
      				 <div class="caption well">    			
       					  <p>Matricule: ${collab.matricule}</p> <p>Adresse: ${collab.adresse}</p> <p>Date de Naissance: ${collab.dateNaissance}</p> <p>Numéro de sécu:${collab.secu}</p> <p>Email: ${collab.emailPro}</p> 
-       					  <a href="#" class="btn btn-primary" role="button">Editer</a>
+       					  <a href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-pencil"></span> Editer </a>
      				 </div>
    				 </div>
  			 </div>					  
