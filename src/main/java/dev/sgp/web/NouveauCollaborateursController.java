@@ -11,6 +11,7 @@ import java.util.Random;
 import java.util.ResourceBundle;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,6 +22,7 @@ import dev.sgp.service.CollaborateurService;
 import dev.sgp.service.VisiteWebService;
 import dev.sgp.util.Constantes;
 
+@WebServlet("/collaborateurs/nouveau")
 public class NouveauCollaborateursController extends HttpServlet {
 	private CollaborateurService collabService = Constantes.COLLAB_SERVICE;
 	private VisiteWebService visiteService = Constantes.VISITE_SERVICE;
