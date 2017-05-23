@@ -7,21 +7,21 @@ import javax.servlet.http.*;
 
 
 public class EditerCollaborateurController extends HttpServlet{
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws
 	ServletException, IOException {
-		
-	// récupère la valeur d'un paramètre dont le nom est matricule
-	String matriculeParam = req.getParameter("matricule");
-	if (matriculeParam != null || !matriculeParam.equals("")) { 
-	resp.setContentType("text/html");
-	// code HTML écrit dans le corps de la réponse
-	resp.getWriter().write("<h1>Edition de Collaborateur</h1>"
-	+ "<p>matricule="+ matriculeParam + "<p>");}
-	else {
-		resp.sendError(400,"un matricule est attendu");
-	}
+
+		// récupère la valeur d'un paramètre dont le nom est matricule
+		String matriculeParam = req.getParameter("matricule");
+		if (matriculeParam != null || !matriculeParam.equals("")) { 
+			resp.setContentType("text/html");
+			// code HTML écrit dans le corps de la réponse
+			resp.getWriter().write("<h1>Edition de Collaborateur</h1>"
+					+ "<p>matricule="+ matriculeParam + "<p>");}
+		else {
+			resp.sendError(400,"un matricule est attendu");
+		}
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,13 +42,13 @@ public class EditerCollaborateurController extends HttpServlet{
 			if( prenomParam ==null || prenomParam.equals("")) errorParam=errorParam+" prenom";
 			resp.sendError(400,"Les Champs suivants sont manquants:" +errorParam);
 		}else {
-		resp.setContentType("text/html");
-		// code HTML écrit dans le corps de la réponse
-		resp.getWriter().write("<h1>Edition de Collaborateur</h1>"
-		+ "<p>matricule="+ matriculeParam + "<p>"
-		+ "<p>titre="+ titreParam + "<p>"
-		+ "<p>nom="+ nomParam + "<p>"
-		+ "<p>prenom="+ prenomParam + "<p>");}
+			resp.setContentType("text/html");
+			// code HTML écrit dans le corps de la réponse
+			resp.getWriter().write("<h1>Edition de Collaborateur</h1>"
+					+ "<p>matricule="+ matriculeParam + "<p>"
+					+ "<p>titre="+ titreParam + "<p>"
+					+ "<p>nom="+ nomParam + "<p>"
+					+ "<p>prenom="+ prenomParam + "<p>");}
 	}
 
-	}
+}
