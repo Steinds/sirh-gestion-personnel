@@ -8,12 +8,14 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
 import dev.sgp.entite.VisiteWeb;
 import dev.sgp.service.VisiteWebService;
 import dev.sgp.util.Constantes;
 
+@WebFilter(urlPatterns = {"/*"})
 public class FrequentationFilter implements Filter{
 private FilterConfig config = null;
 	//récupération du service
@@ -34,11 +36,9 @@ private FilterConfig config = null;
 		chain.doFilter(request, response);
 		
 		long after = System.currentTimeMillis();
-		
 		config.getServletContext().log(path + " : " + (after - before));
-		
 		VisiteWeb visite = new VisiteWeb(1,path,(int)(after - before));
-		visiteService.sauvegarderVisiteWeb(visite);
+		visiteService.sauvegarderVisite(visite);
 		}
 
 	@Override

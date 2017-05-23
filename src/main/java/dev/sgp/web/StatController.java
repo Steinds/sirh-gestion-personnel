@@ -1,6 +1,7 @@
 package dev.sgp.web;
 
 import java.io.IOException;
+
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -8,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dev.sgp.entite.Stat;
 
-import dev.sgp.entite.VisiteWeb;
 import dev.sgp.service.VisiteWebService;
 import dev.sgp.util.Constantes;
 
@@ -18,10 +19,10 @@ public class StatController extends HttpServlet{
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws
 	ServletException, IOException {
-		List<VisiteWeb> visites = visiteService.listerVisiteWeb();
-		List<String> paths= visiteService.listerPath();
+		List<Stat> visites = visiteService.construireStatistiques();
 		
-		req.setAttribute("visites", visites);
+		 
+		req.setAttribute("visite", visites);
 		req.getRequestDispatcher("/WEB-INF/views/visiteWeb/stat.jsp").forward(req, resp);
 
 	}

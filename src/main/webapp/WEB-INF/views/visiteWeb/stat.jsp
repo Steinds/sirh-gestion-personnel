@@ -8,12 +8,35 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Page Stat</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-3.3.7-dist/css/bootstrap.css">
 </head>
 <body>
-<h1>Les Statistiques :</h1>
-	<c:forEach var="visite" items="${visites}">
+<h1 style="text-align:center; margin:20px 0 30px 0">Les visites</h1>
 	
-	<p>	${visite.chemin}	:	${visite.tempsExecution} </p>
-	</c:forEach>
+	<table class="table table-striped">
+		<thead>
+            <tr>
+                <th>Chemin</th>
+                <th>Nombre de visites</th>
+                <th>Min</th>
+                <th>Max</th>
+                <th>Moyenne</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+        	<c:forEach var="visite" items="${visite}">
+        	<tr>
+        		<td>${visite.chemin}</td>
+        		<td>${visite.nbVisites}</td>
+        		<td>${visite.min}</td>
+        		<td>${visite.max}</td>
+        		<td>${visite.moy}</td>
+        	</tr>
+        	</c:forEach>
+        </tbody>
+        
+	
+	</table>
 </body>
 </html>
