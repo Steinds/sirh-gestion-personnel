@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +18,8 @@ import dev.sgp.util.Constantes;
 
 @WebServlet("/stat")
 public class StatController extends HttpServlet{
-	private VisiteWebService visiteService = Constantes.VISITE_SERVICE;
+	
+	@Inject private VisiteWebService visiteService;// = Constantes.VISITE_SERVICE;
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws
 	ServletException, IOException {

@@ -13,22 +13,32 @@
 <body>
 	<h1>Liste de nos Collaborateurs :</h1>
 	<!-- Liste des noms -->
+	<div class="pull-right">
 	<a href="<c:url value='/collaborateurs/nouveau'></c:url>" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nouveau </a><br><br>
-	
+	</div>
 	
 	<div class="row">
 	
 		<c:forEach var="collab" items="${collaborateurs}">
-  			<div class="col-sm-6 col-md-4 col-lg-3">
-   				 <div class="thumbnail">  				 	
- 						 <div class="well">
-   							 <strong> ${collab.nom}  ${collab.prenom}</strong>
- 						 </div>				
-     				 <img src="${collab.photo}" style="width:180px;height:150px;">
-     				 <br>
-     				 <div class="caption well">    			
+  			<div class="col-sm-6 col-md-4">
+   				 <div class="thumbnail">  
+   				 <div class="well">
+   				 <strong> ${collab.nom}  ${collab.prenom}</strong>	
+   				 </div>
+   				 <div class="row">			 	
+ 						 
+   							
+ 						<div class="col-md-4" >			
+     				 <img class="img-responsive" src="${collab.photo}" style="width:180px;height:150px;">
+     				 </div>
+     				 <div class="col-md-8" >	
+     				 <div class="caption well">    
+     				  		
       					  <p>Matricule: ${collab.matricule}</p> <p>Adresse: ${collab.adresse}</p> <p>Date de Naissance: ${collab.dateNaissance}</p> <p>Numéro de sécu:${collab.secu}</p> <p>Email: ${collab.emailPro}</p> 
-       					  <a href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-pencil"></span> Editer </a>
+       					  
+     				 </div>
+     				 <a href="#" class="btn btn-warning pull-right" role="button"><span class="glyphicon glyphicon-pencil"></span> Editer </a>
+     				 </div>
      				 </div>
    				 </div>
  			 </div>					  

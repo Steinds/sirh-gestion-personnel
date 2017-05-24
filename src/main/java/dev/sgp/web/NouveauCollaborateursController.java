@@ -10,6 +10,7 @@ import java.util.Locale;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,8 +25,9 @@ import dev.sgp.util.Constantes;
 
 @WebServlet("/collaborateurs/nouveau")
 public class NouveauCollaborateursController extends HttpServlet {
-	private CollaborateurService collabService = Constantes.COLLAB_SERVICE;
-	private VisiteWebService visiteService = Constantes.VISITE_SERVICE;
+	
+	@Inject private CollaborateurService collabService;// = Constantes.COLLAB_SERVICE;
+	@Inject private VisiteWebService visiteService;// = Constantes.VISITE_SERVICE;
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws
 	ServletException, IOException {
