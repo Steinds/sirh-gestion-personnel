@@ -25,15 +25,12 @@
    				 <div class="well">
    				 <strong> ${collab.nom}  ${collab.prenom}</strong>	
    				 </div>
-   				 <div class="row">			 	
- 						 
-   							
+   				 <div class="row">			 							  							
  						<div class="col-md-4" >			
      				 <img class="img-responsive" src="${collab.photo}" style="width:180px;height:150px;">
      				 </div>
      				 <div class="col-md-8" >	
-     				 <div class="caption well">    
-     				  		
+     				 <div class="caption well">         				 
       					  <p>Matricule: ${collab.matricule}</p> <p>Adresse: ${collab.adresse}</p> <p>Date de Naissance: ${collab.dateNaissance}</p> <p>Numéro de sécu:${collab.secu}</p> <p>Email: ${collab.emailPro}</p> 
        					  
      				 </div>
