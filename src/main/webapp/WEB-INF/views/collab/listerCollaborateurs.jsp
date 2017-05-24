@@ -37,7 +37,7 @@
       					  <p>Matricule: ${collab.matricule}</p> <p>Adresse: ${collab.adresse}</p> <p>Date de Naissance: ${collab.dateNaissance}</p> <p>Numéro de sécu:${collab.secu}</p> <p>Email: ${collab.emailPro}</p> 
        					  
      				 </div>
-     				 <a href="#" class="btn btn-warning pull-right" role="button"><span class="glyphicon glyphicon-pencil"></span> Editer </a>
+     				 <a href="<c:url value='/collaborateurs/editer?matricule=${collab.matricule}'></c:url>" class="btn btn-warning pull-right" role="button"><span class="glyphicon glyphicon-pencil"></span> Editer </a>
      				 </div>
      				 </div>
    				 </div>
