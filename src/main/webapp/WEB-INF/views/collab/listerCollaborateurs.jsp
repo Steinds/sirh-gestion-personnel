@@ -31,8 +31,7 @@
      				 </div>
      				 <div class="col-md-8" >	
      				 <div class="caption well">         				 
-      					  <p>Matricule: ${collab.matricule}</p> <p>Adresse: ${collab.adresse}</p> <p>Date de Naissance: ${collab.dateNaissance}</p> <p>Numéro de sécu:${collab.secu}</p> <p>Email: ${collab.emailPro}</p> 
-       					  
+      					  <p>Matricule: ${collab.matricule}</p> <p>Adresse: ${collab.adresse}</p> <p>Date de Naissance: ${collab.dateNaissance}</p> <p>Numéro de sécu:${collab.secu}</p> <p>Email: ${collab.emailPro}</p>   
      				 </div>
      				 <a href="<c:url value='/collaborateurs/editer?matricule=${collab.matricule}'></c:url>" class="btn btn-warning pull-right" role="button"><span class="glyphicon glyphicon-pencil"></span> Editer </a>
      				 </div>
