@@ -1,14 +1,23 @@
 package dev.sgp.entite;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 
 @Entity
 public class VisiteWeb {
+@Id
+@GeneratedValue
 int id;
 String chemin;
 int tempsExecution;
 
+
+public VisiteWeb() {
+	super();
+	// TODO Auto-generated constructor stub
+}
 
 public VisiteWeb(int id, String chemin, int tempsExecution) {
 	super();

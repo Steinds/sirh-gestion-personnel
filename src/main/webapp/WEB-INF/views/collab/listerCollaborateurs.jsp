@@ -14,7 +14,10 @@
 	<h1>Liste de nos Collaborateurs :</h1>
 	<!-- Liste des noms -->
 	<div class="pull-right">
-	<a href="<c:url value='/collaborateurs/nouveau'></c:url>" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nouveau </a><br><br>
+	<a href="<c:url value='/collaborateurs/nouveau'></c:url>" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nouveau </a>
+	<a href="<c:url value='/stat'></c:url>" class="btn btn-primary"><span class="glyphicon glyphicon-time"></span> Statistiques </a>
+	<a href="<c:url value='/activite'></c:url>" class="btn btn-primary"><span class="glyphicon glyphicon-hourglass"></span> Activitée </a>
+	<br><br>
 	</div>
 	
 	<div class="row">

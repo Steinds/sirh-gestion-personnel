@@ -1,9 +1,7 @@
 package dev.sgp.entite;
 
-import javax.persistence.Entity;
-
-@Entity
 public class Stat {
+
 String chemin;
 long nbVisites;
 long min;

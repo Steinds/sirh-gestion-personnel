@@ -36,7 +36,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="dateNaissance">Date de Naissance</label>  
   <div class="col-md-4">
-  <input id="dateNaissance" name="dateNaissance" type="text" placeholder="yyyy-MM-dd" class="form-control input-md" required="">
+  <input id="dateNaissance" name="dateNaissance" type="date" placeholder="" class="form-control input-md" required="">
     
   </div>
 </div>

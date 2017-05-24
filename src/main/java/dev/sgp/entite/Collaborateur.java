@@ -5,11 +5,12 @@ import java.time.ZonedDateTime;
 
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+
+import javax.persistence.Id;
 
 @Entity
 public class Collaborateur {
-	@GeneratedValue
+	@Id
 	String matricule;
 	String nom;
 	String prenom;
@@ -21,8 +22,13 @@ public class Collaborateur {
 	ZonedDateTime dateHeureCreation;
 	boolean actif;
 	
-	
-	
+
+
+	public Collaborateur() {
+		super();
+		
+	}
+
 	@Override
 	public String toString() {
 		return "Collaborateur [matricule=" + matricule + ", nom=" + nom + ", prenom=" + prenom + ", dateNaissance="
