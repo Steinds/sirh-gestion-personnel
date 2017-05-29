@@ -7,6 +7,8 @@ import java.time.ZonedDateTime;
 import javax.persistence.Entity;
 
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Collaborateur {
@@ -20,8 +22,13 @@ public class Collaborateur {
 	String emailPro;
 	String photo;
 	ZonedDateTime dateHeureCreation;
-	boolean actif;
+	@ManyToOne
+	Departement dep;
+	@OneToOne
+	Banque banque;
+
 	
+
 
 
 	public Collaborateur() {
@@ -33,9 +40,60 @@ public class Collaborateur {
 	public String toString() {
 		return "Collaborateur [matricule=" + matricule + ", nom=" + nom + ", prenom=" + prenom + ", dateNaissance="
 				+ dateNaissance + ", adresse=" + adresse + ", secu=" + secu + ", emailPro=" + emailPro + ", photo="
-				+ photo + ", dateHeureCreation=" + dateHeureCreation + ", actif=" + actif + "]";
+				+ photo + ", dateHeureCreation=" + dateHeureCreation + ", dep=" + dep + ", actif=" + actif + "]";
 	}
 	
+	public Collaborateur(String matricule, String nom, String prenom, LocalDate dateNaissance, String adresse,
+			String secu, String emailPro, String photo, ZonedDateTime dateHeureCreation, Departement dep, Banque banque,
+			boolean actif) {
+		super();
+		this.matricule = matricule;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+		this.adresse = adresse;
+		this.secu = secu;
+		this.emailPro = emailPro;
+		this.photo = photo;
+		this.dateHeureCreation = dateHeureCreation;
+		this.dep = dep;
+		this.banque = banque;
+		this.actif = actif;
+	}
+
+	@Deprecated
+	public Collaborateur(String matricule, String nom, String prenom, LocalDate dateNaissance, String adresse,
+			String secu, String emailPro, String photo, ZonedDateTime dateHeureCreation, Departement dep,
+			boolean actif) {
+		super();
+		this.matricule = matricule;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+		this.adresse = adresse;
+		this.secu = secu;
+		this.emailPro = emailPro;
+		this.photo = photo;
+		this.dateHeureCreation = dateHeureCreation;
+		this.dep = dep;
+		this.actif = actif;
+	}
+	public Banque getBanque() {
+		return banque;
+	}
+	
+	public void setBanque(Banque banque) {
+		this.banque = banque;
+	}
+	public Departement getDep() {
+		return dep;
+	}
+
+
+	public void setDep(Departement dep) {
+		this.dep = dep;
+	}
+	boolean actif;
 	public String getMatricule() {
 		return matricule;
 	}
@@ -96,6 +154,7 @@ public class Collaborateur {
 	public void setActif(boolean actif) {
 		this.actif = actif;
 	}
+	@Deprecated
 	public Collaborateur(String matricule, String nom, String prenom, LocalDate dateNaissance, String adresse,
 			String secu, String emailPro, String photo, ZonedDateTime dateHeureCreation, boolean actif) {
 		super();

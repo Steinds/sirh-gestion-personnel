@@ -12,8 +12,6 @@ String nom;
 
 
 public Departement() {
-	super();
-	// TODO Auto-generated constructor stub
 }
 
 public Departement(int id, String nom) {

@@ -4,6 +4,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
@@ -24,6 +25,7 @@ public class CollaborateurService {
 	@Inject Event<CollabEvt> collabEvt;
 	
 	List<Collaborateur> listeCollaborateurs = new ArrayList<>();
+	@SuppressWarnings("unchecked")
 	public List<Collaborateur> listerCollaborateurs() {		
 		Query query = em.createQuery("select collab from Collaborateur collab");		
 		return (List<Collaborateur>) query.getResultList();
@@ -37,5 +39,24 @@ public class CollaborateurService {
 		
 		
 	}
+	
 
+	public void modifierCollaborateur(Collaborateur collab) {		
+		Collaborateur collaborateur = em.find(Collaborateur.class, collab.getMatricule());
+			collaborateur.setEmailPro(collab.getEmailPro());
+			collaborateur.setActif(collab.isActif());
+			collaborateur.setAdresse(collab.getAdresse());
+			collaborateur.setDateHeureCreation(collab.getDateHeureCreation());
+			collaborateur.setDateNaissance(collab.getDateNaissance());
+			collaborateur.setDep(collab.getDep());
+			collaborateur.setPhoto(collab.getPhoto());
+			em.merge(collaborateur);
+	}
+	
+
+		
+		
+		
+	
+	
 }
