@@ -2,6 +2,7 @@ package dev.sgp.rest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
@@ -30,64 +31,64 @@ public class CollaborateurRessource {
 	@PersistenceContext(unitName="sgp-pu") private EntityManager em;
 	@Inject private CollaborateurService collabService;
 	@Inject private BanqueService bankService;
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Collaborateur> listAll(@QueryParam("departement") Integer id) {
 		List<Collaborateur> collabo =new ArrayList<Collaborateur>();
-	if (id!=null)	{
-		Query query = em.createQuery("select collab from Collaborateur collab where collab.dep.id =:id ");
-		query.setParameter("id", id);
-		collabo=(List<Collaborateur>) query.getResultList();
-	}else {
-		collabo = collabService.listerCollaborateurs();
+		if (id!=null)	{
+			Query query = em.createQuery("select collab from Collaborateur collab where collab.dep.id =:id ");
+			query.setParameter("id", id);
+			collabo=(List<Collaborateur>) query.getResultList();
+		}else {
+			collabo = collabService.listerCollaborateurs();
+		}
+		return collabo;
 	}
-	return collabo;
-	}
-	
-	
+
+
 	@SuppressWarnings("unchecked")
 	@GET
 	@Path("/{matricule}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Collaborateur> listDep(@PathParam("matricule") String matricule) {
-	Query query = em.createQuery("select collab from Collaborateur collab where collab.matricule =:matricule ");
-	query.setParameter("matricule", matricule);
-	return  (List<Collaborateur>) query.getResultList();
+		Query query = em.createQuery("select collab from Collaborateur collab where collab.matricule =:matricule ");
+		query.setParameter("matricule", matricule);
+		return  (List<Collaborateur>) query.getResultList();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@GET
 	@Path("/{matricule}/banque")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Banque> listBanque(@PathParam("matricule") String matricule) {
-	Query query = em.createQuery("select collab.banque from Collaborateur collab where collab.matricule =:matricule ");
-	query.setParameter("matricule", matricule);
-	return  (List<Banque>) query.getResultList();
+		Query query = em.createQuery("select collab.banque from Collaborateur collab where collab.matricule =:matricule ");
+		query.setParameter("matricule", matricule);
+		return  (List<Banque>) query.getResultList();
 	}
-	
+
 
 
 	@PUT
 	@Path("/{matricule}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response  updateColla(Collaborateur collab) {	  
-	  collabService.modifierCollaborateur(collab);
-	  ResponseBuilder builder = Response.ok("texte");
-	  builder.language("fr").header("Content-type", "text/html");
-	return builder.build();
+	@Produces(MediaType.APPLICATION_JSON)
+	public Map<String,List<String>>  updateColla(Collaborateur collab,@PathParam("matricule") String matricule) {	  
+		Collaborateur old = em.find(Collaborateur.class, matricule);
+		collabService.modifierCollaborateur(collab);
+		return collabService.checkJson(old, collab);
 	}
-	
+
 	@PUT
 	@Path("/{matricule}/banque")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response  updateBanque(Collaborateur collab) {	  
+	@Produces(MediaType.APPLICATION_JSON)
+	public Map<String,List<String>>  updateBanque(Collaborateur collab,@PathParam("matricule") String matricule) {	  
+		Collaborateur old = em.find(Collaborateur.class, matricule);
 		bankService.modifierCollaborateurBank(collab);
-	  ResponseBuilder builder = Response.ok("texte");
-	  builder.language("fr").header("Content-type", "text/html");
-	return builder.build();
+		return collabService.checkJson(old, collab);
 	}
-	
 
-	
+
+
 }
