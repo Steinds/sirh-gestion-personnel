@@ -9,7 +9,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
+import javax.persistence.TypedQuery;
 
 import dev.sgp.entite.Departement;
 
@@ -21,8 +21,8 @@ public class DepartementService {
 	
 	List<Departement> listeDepartements = new ArrayList<>();
 	public List<Departement> listerDepartements() {		
-		Query query = em.createQuery("select departement from Departement departement");		
-		return (List<Departement>) query.getResultList();
+		TypedQuery<Departement> query = em.createQuery("select departement from Departement departement",Departement.class);		
+		return query.getResultList();
 	}
 
 	public void sauvegarderDepartement(Departement departement) {	
